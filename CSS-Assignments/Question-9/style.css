@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: skyblue;
+    text-align: center;
+    font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-weight: bold;
+    color: white;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: aqua;
+    height: 10vh;
+    margin: 20px 15px 10px;
+}
+
+.middle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 15px;
+    height: 80vh;
+}
+
+aside{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: screen;
+    background-color: #60d560;
+}
+
+
+article{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-end;
+    padding: 20px;
+    width: 75%;
+    background-color: orange;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 35vh;
+    background-color: #f2f250;
+    padding: 10px 20px;
+}

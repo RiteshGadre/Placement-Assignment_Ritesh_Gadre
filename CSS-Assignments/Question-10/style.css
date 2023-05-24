@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.container1{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 50px;
+    padding: 0 15px;
+}
+
+.container1-box1{
+    width: 25%;
+    background-color: #40b4e3;
+}
+
+.container1-box2{
+    width: 75%;
+    background-color: #72737372;
+}
+
+.container2 { 
+    display: flex;
+    padding: 0 15px;
+    width: 100%;
+    height: 100px;
+}
+
+.container2 div{
+    width: 100%;
+    background-color: #808080;
+}
+
+
+.container3 {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    gap: 10px;
+}
+
+.container3 div{
+    background-color: #87CEEB;
+    padding: 0 10px;
+    height: 80px;
+}
+
+
+.container4 {
+    padding: 0 15px;
+    width: 100%;
+    height: 150px;
+    padding: 0 15px;
+}
+
+.container4 div{
+    width: 100%;
+    background-color: #72737372;
+    height: 100px;  
+}
+
+ 
+/* Medium screen size */
+@media only screen and (min-width: 641px) and (max-width: 768px) {
+    .container1 {
+        height: 60px;
+    }
+
+    .container2 {
+        height: 240px;
+    }
+
+    .container3 {
+        flex-direction: row;      
+    }
+
+    .container3 div {
+        width: 33%;
+        height: 220px;
+    }
+
+    .container4 {
+        height: 240px;
+    }
+
+    .container4 div {
+        height: 240px;
+    }
+}
+
+/* Large screen size */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .container1 {
+        height: 80px;
+    }
+
+    .container2 {
+        height: 270px;
+    }
+
+    .container3 {
+        flex-direction: row;
+    }
+
+    .container3 div {
+        width: 33%;
+        height: 240px;
+    }
+
+    .container4 {
+        height: 290px;
+    }
+
+    .container4 div {
+        width: 100%;
+        height: 270px;
+    }
+}
+
+ /* Extra large screen size */
+@media only screen and (min-width: 1025px) {
+    .container1 {
+        height: 100px;
+    }
+
+    .container2 {
+        height: 300px;
+    }
+
+    .container3 {
+        flex-direction: row;
+        height: 250px;
+    }
+
+    .container3 div {
+        width: 33%;
+        height: 240px;
+    }
+
+    .container4 {
+        height: 310px;
+    }
+
+    .container4 div {
+        height: 300px;
+    }
+
+
+}

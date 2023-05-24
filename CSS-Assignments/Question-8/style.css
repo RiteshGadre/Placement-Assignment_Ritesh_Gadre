@@ -1,0 +1,39 @@
+table{
+        border-spacing: 5px;
+        margin: auto;
+}
+
+td {
+        padding: 5px 15px;
+        text-align: center;
+        border: 2px solid black;
+}
+
+.block {
+        display: block;
+}
+
+.hidden{
+        visibility: hidden;
+}
+
+.red {
+       background-color: #ffc0cb; 
+}
+
+.yellow {
+        background-color: hsl(60, 100%, 50%);
+}
+
+.blue {
+        background-color: #87ceeb;
+}
+
+.seperate {
+        padding-top: 10px;
+}
+
+.green {
+        background-color: #adff2f;
+}
+
