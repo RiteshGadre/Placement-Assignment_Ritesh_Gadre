@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl text-white text-center text-yellow-300 font-bold mb-8">Blog App</h1>
+
+    <div class="w-[60%]">
+      <h2 class="text-3xl text-white mt-8 mb-4">Add a New Blog</h2>
+      <form id="blogForm" class="mb-8 w-[60%]">
+        <input type="text" id="titleInput" class="w-full rounded-lg p-2" placeholder="Blog Title" required>
+        <textarea id="bodyInput" class="w-full rounded-lg p-2 mt-2" placeholder="Blog Description" required></textarea>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white rounded-lg px-4 py-2 mt-4">Submit</button>
+      </form>
+    </div>
+    <div id="blogContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 zoom-in"></div>
+
+  </div>
+
+  <script>
+    // Fetch data from API and display on UI
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(data => displayPosts(data));
+
+    function displayPosts(posts) {
+      const container = document.getElementById('blogContainer');
+      container.innerHTML = '';
+
+      posts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.classList.add('bg-white', 'rounded-lg', 'p-4');
+        postElement.setAttribute('data-id', post.id);
+        postElement.innerHTML = `
+          <h3 class="text-xl font-bold">${post.title}</h3>
+          <p class="mt-2">${post.body}</p>
+          <button onclick="deletePost(${post.id})" class="bg-red-500 hover:bg-red-700 text-white rounded-lg px-4 py-2 mt-4">Delete</button>
+        `;
+        container.appendChild(postElement);
+      });
+    }
+
+    // Add new blog functionality
+    const blogForm = document.getElementById('blogForm');
+    blogForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const titleInput = document.getElementById('titleInput');
+      const bodyInput = document.getElementById('bodyInput');
+
+      const newPost = {
+        title: titleInput.value,
+        body: bodyInput.value
+      };
+
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify(newPost),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Add the new post to the UI
+        const container = document.getElementById('blogContainer');
+        const postElement = document.createElement('div');
+        postElement.classList.add('bg-white', 'rounded-lg', 'p-4');
+        postElement.setAttribute('data-id', data.id);
+        postElement.innerHTML = `
+          <h3 class="text-xl font-bold">${data.title}</h3>
+          <p class="mt-2">${data.body}</p>
+          <button onclick="deletePost(${data.id})" class="bg-red-500 hover:bg-red-700 text-white rounded-lg px-4 py-2 mt-4">Delete</button>
+        `;
+        container.insertBefore(postElement, container.firstChild);
+
+        // Reset the form
+        titleInput.value = '';
+        bodyInput.value = '';
+      });
+    });
+
+    // Delete functionality
+    function deletePost(postId) {
+      fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+        method: 'DELETE'
+      })
+      .then(() => {
+        // Remove the deleted post from the UI
+        const postElement = document.querySelector(`[data-id="${postId}"]`);
+        postElement.remove();
+      });
+    }
+  </script>
+</body>
+</html>
+    
